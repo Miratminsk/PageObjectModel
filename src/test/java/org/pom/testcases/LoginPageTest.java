@@ -8,14 +8,20 @@ import org.pom.util.Helper;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.apache.log4j.Logger;
 
 public class LoginPageTest extends TestBase {
 
     LoginPage loginPage;
+    Logger log = Logger.getLogger(LoginPageTest.class);
 
     @Test
     public void loginPageTitleTest() {
+        log.info("****************************** starting test case *****************************************");
+        log.info("****************************** freeCrmTitleTest *****************************************");
         Assert.assertEquals(new LoginPage().getLoginPageTitle(), properties.getProperty("loginPageTitle"));
+        log.info("****************************** ending test case *****************************************");
+        log.info("****************************** freeCrmTitleTest *****************************************");
     }
 
     @Test

@@ -3,6 +3,7 @@ package org.pom.base;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -21,6 +22,7 @@ public class TestBase {
 
     public static Properties properties;
     public static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    Logger log = Logger.getLogger(TestBase.class);
 
     public TestBase() {
         setUpProperties();
@@ -37,6 +39,10 @@ public class TestBase {
                 driver.set(new FirefoxDriver());
                 break;
         }
+        log.info("entering application URL");
+        log.warn("Hey this just a warning message");
+        log.fatal("hey this is just fatal error message");
+        log.debug("this is debug message");
         System.out.println(Thread.currentThread().getId());
         getDriver().manage().window().maximize();
         getDriver().manage().deleteAllCookies();
